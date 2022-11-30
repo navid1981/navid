@@ -1,7 +1,10 @@
 package multithreading;
 
+import java.util.concurrent.CountDownLatch;
+
 public class MyThread extends Thread{
     private String name;
+    CountDownLatch countDownLatch;
     @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
@@ -11,9 +14,11 @@ public class MyThread extends Thread{
             } catch (InterruptedException e) {
                 System.out.println(this.name+": Interrupted");
             }
+            countDownLatch.countDown();
         }
     }
-    public MyThread(String name){
+    public MyThread(String name, CountDownLatch countDownLatch){
         this.name=name;
+        this.countDownLatch=countDownLatch;
     }
 }

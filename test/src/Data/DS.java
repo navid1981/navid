@@ -22,6 +22,7 @@ public class DS {
 //    Examine	element()	peek()
     Queue<Integer> queue=new LinkedList<>();
 
+    Queue<Integer> queue1=new PriorityQueue<>((a,b)->a-b);
 
 //    peek()
 //    pop()
@@ -49,5 +50,9 @@ public class DS {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
+
+        queue1.add(3);
+        queue1.add(1);
+        System.out.println(queue1.poll());
     }
 }

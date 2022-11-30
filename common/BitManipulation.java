@@ -18,7 +18,9 @@ public class BitManipulation {
 //        System.out.println(Integer.toBinaryString('b'-32));
 
 //        System.out.println(numberOfSetBit(5));
-        System.out.println(0x1F);
+//        System.out.println(0x1F);
+
+        System.out.println(xor(4));
     }
 
     static boolean getBitAtI(int num, int i){
@@ -58,5 +60,9 @@ public class BitManipulation {
             count++;
         }
         return count;
+    }
+
+    static int xor(int n){
+        return n^1;
     }
 }

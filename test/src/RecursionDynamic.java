@@ -267,6 +267,21 @@ public class RecursionDynamic {
         }
 
     }
+    //8.10
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        if(image[sr][sc]==color) return image;
+        floodFill(image,sr,sc,color,image[sr][sc]);
+        return image;
+    }
+    private void floodFill(int[][] image, int sr, int sc, int color, int old) {
+        if(sr>image.length-1 || sr<0 || sc>image[0].length-1 || sc<0) return;
+        if(image[sr][sc]!=old) return;
+        image[sr][sc]=color;
+        floodFill(image,sr+1,sc,color,old);
+        floodFill(image,sr-1,sc,color,old);
+        floodFill(image,sr,sc+1,color,old);
+        floodFill(image,sr,sc-1,color,old);
+    }
 
     //8.10
     static void paintFill(Color[][] matrix, MyPoint point, String color, String newColor){

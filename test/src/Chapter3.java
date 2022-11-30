@@ -94,6 +94,7 @@ public class Chapter3 {
         }
     }
 
+    //3.2
     public static class StackNode<T>{
         Node<T> top;
 

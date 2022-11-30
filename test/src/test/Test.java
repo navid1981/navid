@@ -43,25 +43,51 @@ public class Test {
 //        System.out.println(Integer.toBinaryString(1<<1));
 //        System.out.println((493438 & 1<<1)==1);
 
-        char[][] grid={ {'1','1','1','1','0'},
-                        {'1','1','0','1','0'},
-                        {'1','1','0','0','0'},
-                        {'0','0','0','0','0'}};
+//        char[][] grid={ {'1','1','1','1','0'},
+//                        {'1','1','0','1','0'},
+//                        {'1','1','0','0','0'},
+//                        {'0','0','0','0','0'}};
+//
+//        numIslands(grid);
 
-        numIslands(grid);
+        int[][] cuboids={{1,2,3},{4,5,6}};
+        maxHeight(cuboids);
+
+    }
+    public static int maxHeight(int[][] cuboids) {
+        for(int i=0;i<cuboids.length;i++){
+            int max=0;
+            int index=0;
+            for(int j=0;j<3;j++){
+                if(cuboids[i][j]>max){
+                    max=cuboids[i][j];
+                    index=j;
+                }
+            }
+            int temp=cuboids[i][0];
+            cuboids[i][0]=max;
+            cuboids[i][index]=temp;
+        }
+        Arrays.sort(cuboids,(a,b)->
+        {
+            if(a[0]>b[0]) return -1;
+            if(a[0]<b[0]) return 1;
+            return 0;
+        });
+        return 0;
     }
 
     public static int numIslands(char[][] grid) {
         boolean[][] visited=new boolean[grid.length][grid[0].length];
         setArrayToFalse(visited);
-        Queue<Point> queue=new LinkedList<Point>();
+        Queue<MyPoint> queue=new LinkedList<MyPoint>();
         int count=0;
         for(int i=0; i<grid.length; i++){
             for(int j=0; j<grid[i].length; j++){
                 if(visited[i][j]==true) continue;
                 visited[i][j]=true;
                 if(grid[i][j]=='1'){
-                    queue.add(new Point(i,j));
+                    queue.add(new MyPoint(i,j));
                     count++;
                     visitAllIsland(queue,visited,grid);
                 }
@@ -70,19 +96,19 @@ public class Test {
         return count;
     }
 
-    public static void visitAllIsland(Queue<Point> queue, boolean[][] visited, char[][] grid){
+    public static void visitAllIsland(Queue<MyPoint> queue, boolean[][] visited, char[][] grid){
         while(!queue.isEmpty()){
-            Point p=queue.poll();
+            MyPoint p=queue.poll();
             if((p.j+1<visited[p.i].length) && visited[p.i][p.j+1]==false){
                 visited[p.i][p.j+1]=true;
                 if(grid[p.i][p.j+1]=='1'){
-                    queue.add(new Point(p.i,p.j+1));
+                    queue.add(new MyPoint(p.i,p.j+1));
                 }
             }
             if((p.i+1< visited.length) && visited[p.i+1][p.j]==false){
                 visited[p.i+1][p.j]=true;
                 if(grid[p.i+1][p.j]=='1'){
-                    queue.add(new Point(p.i,p.j+1));
+                    queue.add(new MyPoint(p.i,p.j+1));
                 }
             }
         }
@@ -565,10 +591,10 @@ class Solution {
         return lists;
     }
 }
-class Point{
+class MyPoint {
     int i;
     int j;
-    public Point(int i, int j){
+    public MyPoint(int i, int j){
         this.i=i;
         this.j=j;
     }

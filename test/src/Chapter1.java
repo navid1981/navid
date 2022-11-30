@@ -32,7 +32,7 @@ public class Chapter1 {
                 { 4, 3, 3, 3, 3, 3, 3, 3, 3, 3 },
         };
         //1.7
-//        rotateMatrix(mat);
+        rotateMatrix(mat);
 
         //1.8
         int[][] mat2={
@@ -44,7 +44,7 @@ public class Chapter1 {
 //        zeroMatrix(mat2);
 
         //1.9
-        System.out.println(isSubString("waterbottle","erbottlewat"));
+//        System.out.println(isSubString("waterbottle","erbottlewat"));
     }
 
     //1.9
@@ -113,15 +113,20 @@ public class Chapter1 {
 //            int fIndex=i;
             int lIndex= matrix.length-1;
             for (int j = i; j <lIndex-i ; j++) {
-                int tmp=matrix[i][lIndex-j];
+//                int tmp=matrix[i][lIndex-j];
+                int temp=matrix[i][j];
                 //up=left
-                matrix[i][lIndex-j]=matrix[j][i];
+//                matrix[i][lIndex-j]=matrix[j][i];
+                matrix[i][j]=matrix[lIndex-j][i];
                 //left=down
-                matrix[j][i]=matrix[lIndex-i][j];
+//                matrix[j][i]=matrix[lIndex-i][j];
+                matrix[lIndex-j][i]=matrix[lIndex-i][lIndex-j];
                 //down=right
-                matrix[lIndex-i][j]=matrix[lIndex-j][lIndex-i];
+//                matrix[lIndex-i][j]=matrix[lIndex-j][lIndex-i];
+                matrix[lIndex-i][lIndex-j]=matrix[j][lIndex-i];
                 //right=up
-                matrix[lIndex-j][lIndex-i]=tmp;
+                matrix[j][lIndex-i]=temp;
+//                matrix[lIndex-j][lIndex-i]=tmp;
             }
         }
         for (int i = 0; i < matrix.length; i++) {

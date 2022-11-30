@@ -32,7 +32,7 @@ public class Chapter2 {
 //        sum(a1,a2);
 
         //2.6
-        System.out.println(isPalindrome(a1));
+//        System.out.println(isPalindrome(a1));
     }
 
     //2.6
@@ -179,6 +179,17 @@ public class Chapter2 {
                 current=current.next;
             }
             current.next=node;
+            return node;
+        }
+
+        public LinkedNode<T> addFirst(T data){
+            if(this.data==null){
+                this.data=data;
+                return this;
+            }
+            LinkedNode<T> node=new LinkedNode<>(data);
+            node.next=this;
+
             return node;
         }
 

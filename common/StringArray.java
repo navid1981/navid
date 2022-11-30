@@ -32,6 +32,7 @@ public class StringArray {
         return stack.isEmpty();
     }
 
+    //The ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without obstructions. Formally, a building has an ocean view if all the buildings to its right have a smaller height
     public Integer[] findBuildings(int[] heights) {
         int max=0;
         LinkedList<Integer> list=new LinkedList<>();
@@ -41,10 +42,10 @@ public class StringArray {
                 list.addFirst(i);
             }
         }
-        list.toArray(new Integer[list.size()]);
-        Integer[] ans=(Integer[])list.toArray();
         return list.toArray(new Integer[list.size()]);
     }
+
+    //Subarray Sum Equals K
     public int subarraySum(int[] nums, int k) {
         Map<Integer,Integer> map=new HashMap<>();
         int sum=0;
@@ -58,6 +59,7 @@ public class StringArray {
         return count;
     }
 
+    //number of unique Island with 1
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
             return 0;
@@ -92,6 +94,7 @@ public class StringArray {
         dfs(grid, r, c + 1);
     }
 
+    //merge interval of time
     public static int[][] merge(int[][] intervals) {
         Arrays.sort(intervals,(a, b)->Integer.compare(a[0],b[0]));
         List<int[]> result=new ArrayList<>();
@@ -107,6 +110,8 @@ public class StringArray {
         return result.toArray(new int[result.size()][2]);
     }
 
+//    Given a string s of '(' , ')' and lowercase English characters.
+//    Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.
     public static String minRemoveToMakeValid(String s) {
         StringBuilder result = removeInvalidClosing(s, '(', ')');
         result = removeInvalidClosing(result.reverse(), ')', '(');
