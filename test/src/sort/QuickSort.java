@@ -8,6 +8,7 @@ public class QuickSort {
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i]+",");
 		}
+		char[] c1="s1".toCharArray();
 	}
 	private static void quickSort(int[] array, int p, int r){
 		if(p<r){

@@ -1,6 +1,7 @@
 package Data;
 
 import Data.Node;
+import javafx.util.Pair;
 
 public class DoublyLinkedList {
     private Node head;
